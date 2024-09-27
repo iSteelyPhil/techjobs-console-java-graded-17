@@ -42,6 +42,8 @@ public class JobData {
             }
         }
 
+        Collections.sort(values);
+
         return values;
     }
 
@@ -50,7 +52,7 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        return allJobs;
+        return new ArrayList<>(allJobs);
     }
 
     /**
@@ -75,7 +77,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -95,7 +97,19 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+       /* return null;*/
+        ArrayList<HashMap<String, String>> checkJobs = new ArrayList<>();
+            for (HashMap<String, String> job : allJobs){
+                for (String field : job.values()){
+                    if (field.toLowerCase().contains(value.toLowerCase())){
+                        if(!checkJobs.contains(job)){
+                            checkJobs.add(job);
+                        }
+                        break;
+                    }
+                }
+            }
+            return checkJobs;
     }
 
     /**
