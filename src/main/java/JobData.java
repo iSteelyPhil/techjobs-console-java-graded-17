@@ -100,11 +100,12 @@ public class JobData {
        /* return null;*/
         ArrayList<HashMap<String, String>> checkJobs = new ArrayList<>();
         for (HashMap<String, String> job : allJobs) {
-            for (String jobKey : job.values()) {
-                if (jobKey.toLowerCase().contains(value.toLowerCase())) {
+            for (String jobField : job.values()) {
+                if (jobField.toLowerCase().contains(value.toLowerCase())) {
                     if (!checkJobs.contains(job)) {
                         checkJobs.add(job);
                     }
+
                 }
             }
 
