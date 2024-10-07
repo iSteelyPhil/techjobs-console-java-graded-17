@@ -105,7 +105,6 @@ public class JobData {
                     if (!checkJobs.contains(job)) {
                         checkJobs.add(job);
                     }
-
                 }
             }
 
